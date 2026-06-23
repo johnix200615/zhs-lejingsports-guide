@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>MK体育 · 信息索引与资料整理</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f7f3ed;  /* 米白基调 */
+      font-family: 'Georgia', 'Times New Roman', '宋体', 'Songti SC', serif;
+      color: #2c2b28;
+      line-height: 1.75;
+      padding: 2.2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-container {
+      max-width: 780px;
+      width: 100%;
+      background: #fefcf8;
+      padding: 2.4rem 2rem 3rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+      transition: box-shadow 0.25s ease;
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 1rem 0.5rem; }
+      .page-container { padding: 1.8rem 1.2rem 2.2rem; }
+    }
+
+    /* 开场短句 —— 类似题记 */
+    .epigraph {
+      font-size: 1.05rem;
+      letter-spacing: 0.03em;
+      color: #5b5a56;
+      border-left: 3px solid #c0a78b;
+      padding-left: 1.2rem;
+      margin-bottom: 1.8rem;
+      font-style: italic;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+      color: #2a2722;
+    }
+
+    .subhead {
+      font-size: 0.95rem;
+      color: #6f6b64;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e2d9ce;
+      padding-bottom: 0.8rem;
+    }
+
+    /* 承接段落 用首字母下沉增添书卷气 */
+    .intro-para::first-letter {
+      float: left;
+      font-size: 2.8rem;
+      line-height: 1;
+      padding-right: 0.3rem;
+      color: #8b7b67;
+      font-weight: 500;
+      margin-top: 0.15rem;
+    }
+
+    .intro-para {
+      margin-bottom: 1.6rem;
+      text-align: justify;
+    }
+
+    .body-text {
+      text-align: justify;
+      margin-bottom: 1.4rem;
+    }
+
+    /* 特点列表 —— 采用类似注释卡片 */
+    .feature-list {
+      background: #f3ede6;
+      padding: 1.6rem 1.8rem;
+      border-radius: 14px;
+      margin: 1.8rem 0 2rem;
+      box-shadow: inset 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .feature-list h2 {
+      font-size: 1.25rem;
+      font-weight: 450;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      color: #3b3730;
+      border-bottom: 1px dashed #cbb9a5;
+      padding-bottom: 0.4rem;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 0.8rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .feature-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .feature-marker {
+      color: #9c8873;
+      font-weight: 400;
+      min-width: 1.2rem;
+    }
+
+    .feature-desc {
+      flex: 1;
+    }
+
+    /* 引用块 / 提示框 */
+    .inset-box {
+      background: #faf6f0;
+      border-left: 4px solid #b8a38b;
+      padding: 1rem 1.4rem;
+      margin: 1.6rem 0;
+      font-size: 0.95rem;
+      color: #43413c;
+      border-radius: 0 12px 12px 0;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .inset-box strong {
+      color: #4d4238;
+      font-weight: 550;
+    }
+
+    /* 温和结尾 */
+    .closing-note {
+      margin-top: 2rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #ddd3c5;
+      color: #5d5952;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      text-align: left;
+    }
+
+    .closing-note a {
+      color: #6b5c4a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .closing-note a:hover {
+      color: #3b3228;
+      text-decoration-color: #3b3228;
+    }
+
+    /* 其他 inline 链接 */
+    .inline-link {
+      color: #6b5c4a;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-thickness: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .inline-link:hover {
+      color: #3b3228;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e5dbd0;
+      margin: 1.8rem 0 1.2rem;
+      opacity: 0.6;
+    }
+
+    .faq-summary {
+      margin: 1.4rem 0 0.6rem;
+    }
+
+    .faq-summary details {
+      margin-bottom: 0.7rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px dotted #e2d7cb;
+    }
+
+    .faq-summary summary {
+      cursor: pointer;
+      font-weight: 400;
+      color: #3d3a34;
+      padding: 0.2rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .faq-summary summary::before {
+      content: "▸";
+      color: #aa9682;
+      font-size: 0.9rem;
+      transition: transform 0.2s;
+    }
+
+    .faq-summary details[open] summary::before {
+      content: "▾";
+    }
+
+    .faq-summary .faq-answer {
+      padding: 0.5rem 0 0.2rem 1.2rem;
+      color: #59544b;
+      font-size: 0.92rem;
+    }
+
+    /* 响应式微调 */
+    @media (max-width: 420px) {
+      h1 { font-size: 1.6rem; }
+      .feature-list { padding: 1.2rem 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="page-container">
+
+  <!-- 开场短句 -->
+  <div class="epigraph">
+    一份整理，一次索引，将分散的信息聚合成可参照的脉络。
+  </div>
+
+  <h1>MK体育 · 资料整理笔记</h1>
+  <div class="subhead">从信息归档的角度，理解一个体育内容平台的结构</div>
+
+  <!-- 承接段落 1：交代背景与整理动机 -->
+  <p class="intro-para">
+    在日常浏览体育资讯的过程中，笔者注意到许多用户并不清楚如何系统化地追溯赛事数据、联赛结构或平台功能。与其依赖零散的截图与口耳相传，不如将可公开获取的信息框架加以梳理，形成一份便于对照的索引。本文基于对 <a href="https://appsite-mksports.com" class="inline-link">MK体育</a> 公开页面结构的观察，尝试从内容组织与信息分类的角度做一次不带评价的整理。
+  </p>
+
+  <!-- 承接段落 2：进一步解释思路 -->
+  <p class="body-text">
+    所谓“资料整理”，并非罗列网址或照搬文档，而是提炼出页面中反复出现的模块逻辑：赛事类别如何分层、常用功能入口如何分布、不同运动项目的资料是否归入统一目录。这种整理方式对希望快速定位信息的人而言，是一种节省时间的参照框架。
+  </p>
+
+  <!-- 特点列表：清晰、模块化、可追溯 -->
+  <div class="feature-list">
+    <h2>从索引中可见的几个特征</h2>
+
+    <div class="feature-item">
+      <span class="feature-marker">·</span>
+      <span class="feature-desc"><strong>分类层级清晰</strong> —— 主要运动项目（如足球、篮球、网球等）均有独立的内容分区，子页面进一步按联赛、杯赛、积分榜等维度展开，便于资料聚合与交叉引用。</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-marker">·</span>
+      <span class="feature-desc"><strong>数据与文本互补</strong> —— 除赛事介绍外，页面常配合统计表、历史记录或近期赛果，形成“文字背景 + 数据佐证”的复合信息结构，对资料收集者较为友好。</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-marker">·</span>
+      <span class="feature-desc"><strong>保持统一的命名惯例</strong> —— 联赛名称、队伍简称、赛事阶段等术语在页面间基本一致，降低了信息拼合时的歧义。</span>
+    </div>
+    <div class="feature-item">
+      <span class="feature-marker">·</span>
+      <span class="feature-desc"><strong>功能入口与信息入口有所区分</strong> —— 操作类按钮（筛选、排序、切换视图）与静态说明页在视觉上保持距离，避免用户在查阅时被交互元素干扰。</span>
+    </div>
+  </div>
+
+  <!-- 引用块 / 提示框：给整理者的小提醒 -->
+  <div class="inset-box">
+    <strong>📋 整理备忘</strong>：如果你计划从 <a href="https://appsite-mksports.com" class="inline-link">MK体育</a> 收集某一联赛的完整信息，建议先浏览“项目总览”页，确认该赛事是否涵盖预选赛、正赛、升降级等子板块，以免遗漏重要节点。
+  </div>
+
+  <!-- 一个自然场景 + 资料整理的实际应用 -->
+  <p class="body-text">
+    假设你想了解某个欧洲足球联赛近五年的冠军变迁，一种有效的索引方式是：先定位该联赛的主页面，然后依次查阅历年赛季回顾、冠军列表以及关联的杯赛资料。这种递进式的资料查阅流程，恰好符合 <a href="https://appsite-mksports.com" class="inline-link">MK体育</a> 目前的信息组织方式——从大类到细项，每层都留有交叉引用的接口。
+  </p>
+
+  <!-- FAQ 摘要（轻量，2-3 条） -->
+  <div class="faq-summary">
+    <details>
+      <summary>FAQ：这种索引方式适合哪些使用场景？</summary>
+      <div class="faq-answer">适合做赛事背景调查、历史数据分析、多联赛横向对比等偏研究型的浏览需求，也适合新手快速理解平台结构。</div>
+    </details>
+    <details>
+      <summary>FAQ：页面内容是否长期保持稳定？</summary>
+      <div class="faq-answer">互联网信息会有迭代，但核心分类逻辑和资料框架通常延续较长时间。建议以当前公开页面为准，定期对照索引进行微调。</div>
+    </details>
+    <details>
+      <summary>FAQ：整理的信息是否可以对外分享？</summary>
+      <div class="faq-answer">这里整理的是公开页面结构和通用分类原则，不涉及非公开或受限制内容，可作为个人参考或学习用途。</div>
+    </details>
+  </div>
+
+  <hr>
+
+  <!-- 温和结尾：回扣资料整理的价值 -->
+  <div class="closing-note">
+    资料整理的核心不在于收集，而在于建立可检索、可对照的秩序。<a href="https://appsite-mksports.com">MK体育</a> 作为信息集合的载体，其页面结构本身就提供了一种分类的范本。无论你是为了快速找到某场比赛的数据，还是想整体了解一个运动项目的资料分布，以索引的视角去浏览，往往比漫无目的地点击更有效率。<br><br>
+    希望这份笔记能为你提供一点线索，也欢迎你基于自己的使用习惯，构建属于自己的资料索引路径。
+  </div>
+
+  <!-- 极简脚注（不干扰主体） -->
+  <div style="margin-top: 2.4rem; font-size: 0.75rem; color: #a9a098; text-align: center; letter-spacing: 0.03em; border-top: 1px solid #ede6dc; padding-top: 1.2rem;">
+    资料整理 · 公开信息索引
+  </div>
+
+</div>
+</body>
+</html>
